@@ -3,6 +3,8 @@ package sample;
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,8 @@ import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.net.DatagramSocket;
+import java.net.UnknownHostException;
 
 
 public class Main extends Application {
@@ -34,6 +38,13 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
+        ObservableList<UdpPackage> savedPackages = FXCollections.observableArrayList();
+        ObservableList<UdpPackage> loggedPackages = FXCollections.observableArrayList();
+
+        UdpPackageReceiver receiver;
+        DatagramSocket sender;
+
         launch(args);
 
 
@@ -56,8 +67,8 @@ public class Main extends Application {
         trans.setNode(drone);
         trans.play();
 
-
-        Pane root = new Pane();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
+        Pane root = loader.load();
         root.getChildren().add(drone);
         Scene scene = new Scene (root, SCENE_WIDTH, SCENE_HEIGHT);
 
@@ -78,8 +89,6 @@ public class Main extends Application {
 
 
     }
-
-
 
     private Label labelInstructions(){
         Label instructions = new Label("Use the arrow keys to move the circle");
