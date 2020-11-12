@@ -22,7 +22,6 @@ import javafx.util.Duration;
 
 
 
-
 public class Main extends Application {
     final private static double SCENE_WIDTH = 1000;
     final private static double SCENE_HEIGHT = SCENE_WIDTH/16 * 9;
