@@ -38,7 +38,7 @@ public class UdpPackageReceiver implements Runnable{
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
             try {
                 socket.receive(packet);
-                System.out.println("package arrived!");
+                System.out.println("\npackage arrived!");
                 UdpPackage udpPackage = new UdpPackage("name", packet.getData(), packet.getAddress(), socket.getLocalAddress(), packet.getPort(), socket.getLocalPort());
                 udpPackages.add(udpPackage);
                 String command = new String(packet.getData()).trim();
