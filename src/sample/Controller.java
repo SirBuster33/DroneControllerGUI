@@ -15,7 +15,6 @@ import java.net.*;
 
 public class Controller {
 
-    /*
     public TableView tableViewLog;
     public TableColumn logColumnFromIp;
     public TableColumn logColumnToIp;
@@ -23,14 +22,16 @@ public class Controller {
     public TableColumn logColumnAscii;
     public TableColumn logColumnHex;
     public TableColumn logColumnTime;
-    public TableColumn logColumnFromPort;*/
+    public TableColumn logColumnFromPort;
 
+
+    public TextField textFieldName;
     public TextField textFieldASCII;
+    public TextField textFieldHEX;
     public TextField textFieldAddress;
     public TextField textFieldPort;
 
 
-    /*
     public TableView tableViewSavedPackages;
     public TableColumn tableColumnSend;
     public TableColumn tableColumnName;
@@ -38,7 +39,6 @@ public class Controller {
     public TableColumn tableColumnToPort;
     public TableColumn tableColumnASCII;
     public TableColumn tableColumnHEX;
-     */
 
     private ObservableList<UdpPackage> savedPackages = FXCollections.observableArrayList();
     private ObservableList<UdpPackage> loggedPackages = FXCollections.observableArrayList();
@@ -55,7 +55,7 @@ public class Controller {
         savedPackages.addAll(test1, test2);
 
         //add list of items to table
-        /*tableViewLog.setItems(loggedPackages);
+        tableViewLog.setItems(loggedPackages);
 
         //set columns content
         logColumnTime.setCellValueFactory(
@@ -81,19 +81,16 @@ public class Controller {
         );
 
 
-         */
-
-        /*
         tableViewSavedPackages.setItems(savedPackages);
         // Do this fucking column yo
-        // tableColumnSend.setCellValueFactory(
-        //         new PropertyValueFactory<UdpPackage, String>("dataAsString")
-        // );
-        tableColumnName.setCellValueFactory(
+        /*tableColumnSend.setCellValueFactory(
                 new PropertyValueFactory<UdpPackage, String>("dataAsString")
+        );*/
+        tableColumnName.setCellValueFactory(
+                new PropertyValueFactory<UdpPackage, String>("name")
         );
         tableColumnToAddress.setCellValueFactory(
-                new PropertyValueFactory<UdpPackage, Integer>("toAddress")
+                new PropertyValueFactory<UdpPackage, Integer>("toIp")
         );
         tableColumnToPort.setCellValueFactory(
                 new PropertyValueFactory<UdpPackage, String>("toPort")
@@ -103,7 +100,7 @@ public class Controller {
         );
         tableColumnHEX.setCellValueFactory(
                 new PropertyValueFactory<UdpPackage, String>("dataAsHex")
-        );*/
+        );
 
         //add udp server/receiver
         receiver = new UdpPackageReceiver(loggedPackages, 6000);
@@ -122,17 +119,24 @@ public class Controller {
 
         // sends a basic test message to localhost port 4000!
 
+        String name = textFieldName.getText();
         String ASCII = textFieldASCII.getText();
+        String HEX = textFieldHEX.getText();
         String address = textFieldAddress.getText();
         int port = Integer.parseInt(textFieldPort.getText());
 
         DatagramPacket packet = null;
+        UdpPackage message = null;
 
         try {
             packet = new DatagramPacket(ASCII.getBytes(), ASCII.length(), InetAddress.getByName(address), port);
             sender.send(packet);
+            message = new UdpPackage(name, ASCII, InetAddress.getByName(address), InetAddress.getByName(address), port, port);
+            // loggedPackages.add(message);
+            // savedPackages.add(message);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

@@ -34,12 +34,15 @@ public class UdpPackageReceiver implements Runnable{
     public void run() {
         while (running)
         {
+            buf = new byte[256];
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
             try {
                 socket.receive(packet);
                 System.out.println("package arrived!");
                 UdpPackage udpPackage = new UdpPackage("name", packet.getData(), packet.getAddress(), socket.getLocalAddress(), packet.getPort(), socket.getLocalPort());
                 udpPackages.add(udpPackage);
+                String command = new String(packet.getData()).trim();
+                System.out.println(command);
             } catch (IOException e) {
                 e.printStackTrace();
             }
