@@ -22,19 +22,28 @@ import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.DatagramSocket;
 import java.net.UnknownHostException;
+import java.util.List;
+import java.util.Stack;
 
 
 public class Main extends Application {
     final private static double SCENE_WIDTH = 1000;
     final private static double SCENE_HEIGHT = SCENE_WIDTH/16 * 9;
-    final private static double RADIUS = 10;
+    final private static double RADIUS = 25;
     //final private double MAX_SPEED = 5;
     //final private double INITIAL_VELOCITY = 0.1;
     //final private double GRAVITY_CONSTANT = 0.004;
-    private double moveSpeed = 5;
-    private double transitionDuration = 10/moveSpeed;
+    private double moveSpeed = 50;
+    //private double transitionDuration = 10/moveSpeed;
+    private double centerX = 100;
+    private double centerY = 100;
+    public Circle drone = new Circle(centerY, centerX, RADIUS, Color.RED);
+    String command = UdpPackageReceiver.command;
+
+
 
 
     public static void main(String[] args) {
@@ -52,20 +61,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Circle drone = new Circle();
-        drone.setFill(Color.RED);
+        /*drone.setFill(Color.RED);
         drone.setRadius(RADIUS);
         drone.setLayoutX(SCENE_WIDTH/2);
-        drone.setLayoutY(SCENE_HEIGHT-RADIUS);
+        drone.setLayoutY(SCENE_HEIGHT-RADIUS);*/
 
-        TranslateTransition trans = new TranslateTransition();
-        trans.setDuration(Duration.seconds(transitionDuration));
-        trans.setToX(0);
-        trans.setToY(-3);
-        trans.setAutoReverse(true);
-        trans.setCycleCount(Animation.INDEFINITE);
-        trans.setNode(drone);
-        trans.play();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Pane root = loader.load();
@@ -79,14 +79,8 @@ public class Main extends Application {
 
         //final Group group = new Group(labelInstructions(), drone, root);
 
-        moveDroneKey(scene, drone);
-
-
-
-
-
-
-
+        //moveDroneKey(scene, drone);
+        //moveDroneController();
 
     }
 
@@ -94,6 +88,33 @@ public class Main extends Application {
         Label instructions = new Label("Use the arrow keys to move the circle");
         return instructions;
     }
+
+    /*private void moveDroneController(){
+        try {
+            switch (command) {
+                case "done":
+                    drone.setCenterX(drone.getCenterX());
+                    System.out.println("commmand read");
+                    break;
+                case "moveright":
+                    drone.setCenterX(drone.getCenterX() - 5);
+                    break;
+                case "moveleft":
+                    drone.setCenterX(drone.getCenterX() + 5);
+                    break;
+                case "moeup":
+                    drone.setCenterY(drone.getCenterY() - 5);
+                    break;
+                case "movedown":
+                    drone.setCenterY(drone.getCenterY() + 5);
+                    break;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+
+        }
+    }*/
 
 
     private void moveDroneKey(Scene scene, final Circle drone){
@@ -111,6 +132,9 @@ public class Main extends Application {
             }
         });
     }
+
+
+
 
 
 
