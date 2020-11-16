@@ -32,22 +32,40 @@ public class Move implements Runnable {
                 drone.setX((int)canvas.getWidth()/2);
                 resetCanvas(graphics, canvas);
                 break;
-            case "movedown":
+            case "backward":
                 drone.setY(drone.getY() + speed);
                 resetCanvas(graphics, canvas);
                 break;
-            case "moveup":
+            case "forward":
                 drone.setY(drone.getY() - speed);
                 resetCanvas(graphics, canvas);
                 break;
-            case "moveleft":
+            case "left":
                 drone.setX(drone.getX() - speed);
                 resetCanvas(graphics, canvas);
                 break;
-            case "moveright":
+            case "right":
                 drone.setX(drone.getX() + speed);
                 resetCanvas(graphics, canvas);
                 break;
+            case "up":
+                // drone.setY(drone.getY() + speed);
+                // resetCanvas(graphics, canvas);
+                break;
+            case "down":
+                // drone.setY(drone.getY() - speed);
+                // resetCanvas(graphics, canvas);
+                break;
+            case "cw":
+                // drone.setY(drone.getY() + speed);
+                // resetCanvas(graphics, canvas);
+                break;
+            case "ccw":
+                // drone.setY(drone.getY() - speed);
+                // resetCanvas(graphics, canvas);
+                break;
+            /*case "speed x":
+                break;*/
         }
     }
 
