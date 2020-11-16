@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="1000" prefWidth="1000" vgap="10" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-   <children>
-      <AnchorPane prefHeight="1000" prefWidth="1000" />
-   </children>
-</GridPane>
+<BorderPane prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+      <Canvas fx:id="canvas" height="350.0" width="414.0" BorderPane.alignment="CENTER">
+
+      </Canvas>
+   </center>
+   <top>
+      <HBox prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40" prefWidth="500" text="Drone Controller GUI">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <Label contentDisplay="BOTTOM" prefHeight="387.0" prefWidth="200.0" text="Commands" BorderPane.alignment="CENTER">
+         <graphic>
+            <ListView fx:id="Commands" prefHeight="250.0" prefWidth="180.0" />
+         </graphic>
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </left>
+</BorderPane>
