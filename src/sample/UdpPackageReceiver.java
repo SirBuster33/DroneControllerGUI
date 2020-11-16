@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class UdpPackageReceiver implements Runnable{
 
@@ -17,17 +15,24 @@ public class UdpPackageReceiver implements Runnable{
     private byte[] buf = new byte[256];
     int port;
     static String command;
-
     List udpPackages;
+    private Controller controller;
+
+    //probably useless for this implementation
     static List<String> commands = new Stack<>();
+    static List<List<String>> listOfSplitCommands = new Stack<>();
+    List<String> splitCommandList;
+    static List<Integer> intCommands = new Stack<>();
 
 
 
 
-    public UdpPackageReceiver(List udpPackages, int port) {
+    public UdpPackageReceiver(List udpPackages, int port, Controller controller) {
         this.running = true;
         this.udpPackages = udpPackages;
         this.port = port;
+        this.controller = controller;
+
 
 
         try {
@@ -40,6 +45,8 @@ public class UdpPackageReceiver implements Runnable{
     public void shutDown(){
         running = false;
     }
+
+
 
     @Override
     public void run() {
@@ -55,13 +62,31 @@ public class UdpPackageReceiver implements Runnable{
                 UdpPackage udpPackage = new UdpPackage("name", packet.getData(), packet.getAddress(), socket.getLocalAddress(), packet.getPort(), socket.getLocalPort());
                 udpPackages.add(udpPackage);
                 String command = new String(packet.getData()).trim();
-                this.command = command;
+                controller.handleCommand(command);
+
+
+
+                // we were using this with a different implementation for the RC controls of the tello api
+                commands.add(command);
+                String splitCommand[] = command.split(" ");
+                splitCommandList = Arrays.asList(splitCommand);
+                for(String s: commands){
+                    if(s.chars().allMatch(Character :: isDigit)){
+                        try {
+                            int i = Integer.parseInt(s.trim());
+                            intCommands.add(i);
+                        }
+                        catch(NumberFormatException e)
+                        {
+                            System.out.println("NumberFormatException: " + e.getMessage());
+                        }
+                    }
+                }
+                listOfSplitCommands.add(splitCommandList);
                 System.out.println(command);
-                commands.add(UdpPackageReceiver.command);
-                //System.out.println(commands);
-                /*Ifor (int i = 0; i<UdpPackageReceiver.commands.size(); i++){
-                    commands.remove("stop");
-                }*/
+
+
+
 
 
             } catch (IOException e) {
