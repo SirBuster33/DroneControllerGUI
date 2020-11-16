@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -46,16 +47,19 @@ public class Controller {
     }
 
     public void handleCommand(String command){
-        if(Commands != null){
-            Commands.getItems().add(0, command);
-        }
-        Move moveDrone = (new Move(command, drone, graphics, canvas));
-        moveDrone.run();
+        Platform.runLater(() -> {
+            if (Commands != null) {
+                Commands.getItems().add(0, command);
+            }
+            Thread moveDrone = new Thread(new Move(command, drone, graphics, canvas));
+            moveDrone.start();
+        });
     }
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
