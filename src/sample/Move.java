@@ -64,6 +64,10 @@ public class Move implements Runnable {
                 // drone.setY(drone.getY() - speed);
                 // resetCanvas(graphics, canvas);
                 break;
+            case "flip b":
+                // drone.setY(drone.getY() - speed);
+                // resetCanvas(graphics, canvas);
+                break;
             /*case "speed x":
                 break;*/
         }
