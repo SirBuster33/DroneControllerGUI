@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import java.awt.*;
 import java.net.*;
 
-import static sample.UdpPackageReceiver.commands;
+
 
 public class Controller {
 
@@ -49,8 +49,8 @@ public class Controller {
         if(Commands != null){
             Commands.getItems().add(0, command);
         }
-        Thread moveDrone = new Thread(new Move(command, drone, graphics, canvas));
-        moveDrone.start();
+        Move moveDrone = (new Move(command, drone, graphics, canvas));
+        moveDrone.run();
     }
 
 
