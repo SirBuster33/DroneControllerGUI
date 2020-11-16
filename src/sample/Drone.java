@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Drone {
     int x, y, radius;
@@ -34,6 +35,7 @@ public class Drone {
 
     public void draw(GraphicsContext graphics){
         graphics.fillOval(x-radius, y-radius, radius * 2, radius * 2);
+        graphics.setFill(Color.BLACK);
 
     }
 
