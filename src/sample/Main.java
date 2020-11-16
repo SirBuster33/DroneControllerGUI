@@ -36,14 +36,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-
-        ObservableList<UdpPackage> savedPackages = FXCollections.observableArrayList();
-        ObservableList<UdpPackage> loggedPackages = FXCollections.observableArrayList();
-
-        UdpPackageReceiver receiver;
-        DatagramSocket sender;
-
-
         launch(args);
 
 

@@ -4,7 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Move implements Runnable {
-    String command = UdpPackageReceiver.command;
+    String command;
     Drone drone;
     GraphicsContext graphics;
     Canvas canvas;
