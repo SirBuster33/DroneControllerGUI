@@ -4,12 +4,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Drone {
-    int x, y, radius;
+    int x, y, radius, yaw;
 
-    public Drone(int x, int y, int radius){
+    public Drone(int x, int y, int radius, int yaw){
         this.x = x;
         this.y = y;
         this.radius = radius;
+        this.yaw = yaw;
     }
     void setX(int x) {
         this.x = x;
