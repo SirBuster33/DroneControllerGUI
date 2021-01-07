@@ -76,9 +76,9 @@ public class Move implements Runnable {
                     drone.setColor(Color.CYAN);
                 }
                 else if (drone.getColor() == Color.CYAN){
-                    drone.setColor(Color.GREEN);
+                    drone.setColor(Color.LIGHTGREEN);
                 }
-                else if (drone.getColor() == Color.GREEN){
+                else if (drone.getColor() == Color.LIGHTGREEN){
                     drone.setColor(Color.YELLOW);
                 }
                 else if (drone.getColor() == Color.YELLOW){
