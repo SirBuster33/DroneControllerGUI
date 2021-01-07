@@ -23,14 +23,11 @@ public class Controller {
     Drone drone = new Drone(212,175,20);
 
 
-
     private ObservableList<UdpPackage> loggedPackages = FXCollections.observableArrayList();
 
     private UdpPackageReceiver receiver;
     @FXML
     private ListView<String> Commands;
-
-
 
 
     public void initialize() throws UnknownHostException {
@@ -56,10 +53,3 @@ public class Controller {
         });
     }
 }
-
-
-
-
-
-
-

@@ -54,8 +54,7 @@ public class UdpPackage {
         return new String(data);
     }
 
-    public String getDataAsHex()
-    {
+    public String getDataAsHex() {
         StringBuilder hex = new StringBuilder();
         for (byte b : data) {
             hex.append(String.format("%02X", (int)b & 0x0FFFFF));
@@ -63,7 +62,6 @@ public class UdpPackage {
         }
         return hex.toString();
     }
-
 
     public void setData(String data) {
         this.data = data.getBytes();
