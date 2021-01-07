@@ -20,7 +20,7 @@ public class Controller {
     @FXML
     public Canvas canvas;
     public GraphicsContext graphics;
-    Drone drone = new Drone(100,100,20);
+    Drone drone = new Drone(212,175,20);
 
 
 
