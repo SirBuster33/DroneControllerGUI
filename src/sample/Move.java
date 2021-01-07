@@ -22,15 +22,15 @@ public class Move implements Runnable {
         int speed = 5;
         switch (command) {
             case "takeoff":
-                drone.setRadius(drone.getRadius() * 2);
-                drone.setY((int)canvas.getHeight() / 2);
-                drone.setX((int)canvas.getWidth() / 2);
+                drone.setRadius(30);
+                // drone.setY((int)canvas.getHeight() / 2);
+                // drone.setX((int)canvas.getWidth() / 2);
                 resetCanvas(graphics, canvas);
                 break;
             case "land":
-                drone.setRadius(drone.getRadius());
-                drone.setY((int)canvas.getHeight() / 2);
-                drone.setX((int)canvas.getWidth() / 2);
+                drone.setRadius(31);
+                // drone.setY((int)canvas.getHeight() / 2);
+                // drone.setX((int)canvas.getWidth() / 2);
                 resetCanvas(graphics, canvas);
                 break;
             case "backward":
