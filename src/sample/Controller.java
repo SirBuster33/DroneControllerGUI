@@ -58,8 +58,12 @@ public class Controller {
             if (Commands != null) {
                 Commands.getItems().add(0, command);
             }
-            Thread moveDrone = new Thread(new Move(command, drone, graphics, canvas, labelX, labelY, labelZ, labelYaw));
+            Thread moveDrone = new Thread(new Move(command, drone, graphics, canvas));
             moveDrone.start();
+            labelX.setText("" + drone.getX());
+            labelY.setText("" + drone.getY());
+            labelZ.setText("" + drone.getRadius());
+            labelYaw.setText("" + drone.getYaw());
         });
     }
 }
