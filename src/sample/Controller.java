@@ -25,7 +25,7 @@ public class Controller {
     public Label labelY;
     public Label labelZ;
     public Label labelYaw;
-    Drone drone = new Drone(212,175,20, 0);
+    Drone drone = new Drone(212,175,20, 0, Color.RED);
 
     private ObservableList<UdpPackage> loggedPackages = FXCollections.observableArrayList();
 

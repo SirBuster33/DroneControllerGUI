@@ -66,8 +66,13 @@ public class Move implements Runnable {
                 resetCanvas(graphics, canvas);
                 break;
             case "flip b":
-                // drone.setY(drone.getY() - speed);
-                // resetCanvas(graphics, canvas);
+                if (drone.getColor() == Color.RED){
+                    drone.setColor(Color.BLUE);
+                }
+                else if (drone.getColor() == Color.BLUE){
+                    drone.setColor(Color.RED);
+                }
+                resetCanvas(graphics, canvas);
                 break;
             /*case "speed x":
                 break;*/

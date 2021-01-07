@@ -5,12 +5,14 @@ import javafx.scene.paint.Color;
 
 public class Drone {
     int x, y, radius, yaw;
+    Color color;
 
-    public Drone(int x, int y, int radius, int yaw){
+    public Drone(int x, int y, int radius, int yaw, Color color){
         this.x = x;
         this.y = y;
         this.radius = radius;
         this.yaw = yaw;
+        this.color = color;
     }
     void setX(int x) {
         this.x = x;
@@ -40,8 +42,15 @@ public class Drone {
         return this.yaw;
     }
 
+    void setColor(Color color){
+        this.color = color;
+    }
+    Color getColor(){
+        return this.color;
+    }
+
     public void draw(GraphicsContext graphics){
-        graphics.setFill(Color.RED);
+        graphics.setFill(color);
         graphics.fillOval(x-radius, y-radius, radius * 2, radius * 2);
 
     }
