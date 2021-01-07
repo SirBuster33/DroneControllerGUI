@@ -76,7 +76,7 @@ public class Move implements Runnable {
 
     public void resetCanvas(GraphicsContext graphics, Canvas canvas) {
         graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        // graphics.setFill(Color.WHITE);
+        graphics.setFill(Color.WHITE);
         graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         drone.draw(graphics);
     }
