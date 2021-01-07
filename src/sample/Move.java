@@ -67,9 +67,21 @@ public class Move implements Runnable {
                 break;
             case "flip b":
                 if (drone.getColor() == Color.RED){
-                    drone.setColor(Color.BLUE);
+                    drone.setColor(Color.PURPLE);
                 }
-                else if (drone.getColor() == Color.BLUE){
+                else if (drone.getColor() == Color.PURPLE){
+                    drone.setColor(Color.DARKBLUE);
+                }
+                else if (drone.getColor() == Color.DARKBLUE){
+                    drone.setColor(Color.CYAN);
+                }
+                else if (drone.getColor() == Color.CYAN){
+                    drone.setColor(Color.GREEN);
+                }
+                else if (drone.getColor() == Color.GREEN){
+                    drone.setColor(Color.YELLOW);
+                }
+                else if (drone.getColor() == Color.YELLOW){
                     drone.setColor(Color.RED);
                 }
                 resetCanvas(graphics, canvas);
