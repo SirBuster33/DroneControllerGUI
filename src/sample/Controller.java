@@ -36,8 +36,8 @@ public class Controller {
     public void initialize() throws UnknownHostException {
         System.out.println("creates list of packages");
         graphics = canvas.getGraphicsContext2D();
-        graphics.fillRect(0,0,canvas.getWidth(), canvas.getHeight());
         graphics.setFill(Color.WHITE);
+        graphics.fillRect(0,0,canvas.getWidth(), canvas.getHeight());
         drone.draw(graphics);
 
         //add udp server/receiver

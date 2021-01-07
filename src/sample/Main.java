@@ -33,13 +33,12 @@ public class Main extends Application {
 
     //String command = UdpPackageReceiver.command;
 
-
-
     public static void main(String[] args) {
         launch(args);
 
 
     }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 

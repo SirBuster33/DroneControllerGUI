@@ -2,6 +2,7 @@ package sample;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Move implements Runnable {
     String command;
@@ -75,6 +76,7 @@ public class Move implements Runnable {
 
     public void resetCanvas(GraphicsContext graphics, Canvas canvas) {
         graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        // graphics.setFill(Color.WHITE);
         graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         drone.draw(graphics);
     }

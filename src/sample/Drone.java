@@ -34,8 +34,8 @@ public class Drone {
     }
 
     public void draw(GraphicsContext graphics){
+        graphics.setFill(Color.RED);
         graphics.fillOval(x-radius, y-radius, radius * 2, radius * 2);
-        graphics.setFill(Color.BLACK);
 
     }
 
