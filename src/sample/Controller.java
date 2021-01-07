@@ -8,7 +8,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 
 import java.awt.*;
@@ -22,10 +21,10 @@ public class Controller {
     @FXML
     public Canvas canvas;
     public GraphicsContext graphics;
-    public Label LabelX;
-    public Label LabelY;
-    public Label LabelZ;
-    public Label LabelYaw;
+    public Label labelX;
+    public Label labelY;
+    public Label labelZ;
+    public Label labelYaw;
     Drone drone = new Drone(212,175,20, 0);
 
     private ObservableList<UdpPackage> loggedPackages = FXCollections.observableArrayList();
@@ -37,10 +36,10 @@ public class Controller {
 
     public void initialize() throws UnknownHostException {
 
-        LabelX.setText("" + drone.getX());
-        LabelY.setText("" + drone.getY());
-        LabelZ.setText("" + drone.getRadius());
-        LabelYaw.setText("" + drone.getYaw());
+        labelX.setText("" + drone.getX());
+        labelY.setText("" + drone.getY());
+        labelZ.setText("" + drone.getRadius());
+        labelYaw.setText("" + drone.getYaw());
 
         System.out.println("creates list of packages");
         graphics = canvas.getGraphicsContext2D();
@@ -59,7 +58,7 @@ public class Controller {
             if (Commands != null) {
                 Commands.getItems().add(0, command);
             }
-            Thread moveDrone = new Thread(new Move(command, drone, graphics, canvas));
+            Thread moveDrone = new Thread(new Move(command, drone, graphics, canvas, labelX, labelY, labelZ, labelYaw));
             moveDrone.start();
         });
     }

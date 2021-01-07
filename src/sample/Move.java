@@ -3,19 +3,28 @@ package sample;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.control.Label;
 
 public class Move implements Runnable {
     String command;
     Drone drone;
     GraphicsContext graphics;
     Canvas canvas;
+    Label labelX;
+    Label labelY;
+    Label labelZ;
+    Label labelYaw;
 
 
-    public Move(String command, Drone drone, GraphicsContext graphics, Canvas canvas) {
+    public Move(String command, Drone drone, GraphicsContext graphics, Canvas canvas, Label labelX, Label labelY, Label labelZ, Label labelYaw) {
         this.command = command;
         this.drone = drone;
         this.graphics = graphics;
         this.canvas = canvas;
+        this.labelX = labelX;
+        this.labelY = labelY;
+        this.labelZ = labelZ;
+        this.labelYaw = labelYaw;
     }
 
     public void Move(String command, Drone drone, GraphicsContext graphics, Canvas canvas) {
