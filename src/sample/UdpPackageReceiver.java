@@ -18,16 +18,11 @@ public class UdpPackageReceiver implements Runnable{
     private Controller controller;
 
 
-
-
-
-
     public UdpPackageReceiver(List udpPackages, int port, Controller controller) {
         this.running = true;
         this.udpPackages = udpPackages;
         this.port = port;
         this.controller = controller;
-
 
 
         try {
@@ -40,8 +35,6 @@ public class UdpPackageReceiver implements Runnable{
     public void shutDown(){
         running = false;
     }
-
-
 
     @Override
     public void run() {
@@ -59,9 +52,6 @@ public class UdpPackageReceiver implements Runnable{
                 String command = new String(packet.getData()).trim();
                 controller.handleCommand(command);
                 System.out.println(command);
-
-
-
 
 
             } catch (IOException e) {

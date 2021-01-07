@@ -15,7 +15,6 @@ public class Drone {
     void setX(int x) {
         this.x = x;
     }
-
     int getX() {
         return this.x;
     }
@@ -23,15 +22,22 @@ public class Drone {
     void setY(int y) {
         this.y = y;
     }
-
     int getY() {
         return this.y;
     }
+
     void setRadius(int radius){
         this.radius = radius;
     }
     int getRadius(){
         return this.radius;
+    }
+
+    void setYaw(int yaw){
+        this.yaw = yaw;
+    }
+    int getYaw(){
+        return this.yaw;
     }
 
     public void draw(GraphicsContext graphics){
