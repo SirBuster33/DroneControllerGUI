@@ -40,7 +40,7 @@ public class Controller {
         graphics.fillRect(0,0,canvas.getWidth(), canvas.getHeight());
         drone.draw(graphics);
 
-        //add udp server/receiver
+        // add udp server/receiver
         receiver = new UdpPackageReceiver(loggedPackages, 6000, this);
         // Run the receiver in a separate thread to the gui.
         new Thread(receiver).start();

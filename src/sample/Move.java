@@ -28,7 +28,7 @@ public class Move implements Runnable {
                 resetCanvas(graphics, canvas);
                 break;
             case "land":
-                drone.setRadius(31);
+                drone.setRadius(20);
                 // drone.setY((int)canvas.getHeight() / 2);
                 // drone.setX((int)canvas.getWidth() / 2);
                 resetCanvas(graphics, canvas);
